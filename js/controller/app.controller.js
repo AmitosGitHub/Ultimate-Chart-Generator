@@ -2,6 +2,8 @@
 
 function onInit() {
   console.log('hjef')
+  gSelcetedChart = null
+  renderGalleryChart()
 }
 
 function onToggle() {

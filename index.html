@@ -9,7 +9,7 @@
   </head>
   <body onload="onInit()" class="flex column">
     <header>
-      <div class="main-header flex space-between main-layout glass">
+      <div class="main-header flex space-between main-layout glass border">
         <div class="logo">
           <h1>logo</h1>
         </div>
@@ -26,12 +26,11 @@
       </div>
     </header>
 
-    <main class="main-layout">
-      <section class="container-gallery flex column glass">
+    <main class="border">
+      <section class="container-gallery flex column glass border">
         <div class="header-gallery flex space-between">
-          <label for="search">
-            <input type="search" />
-          </label>
+          <label for="search"></label>
+          <input type="search" id="search" />
 
           <ul class="sort-gallery">
             <li>Bar</li>
@@ -41,11 +40,11 @@
           </ul>
         </div>
 
-        <div class="content-gallery"></div>
+        <div class="content-gallery border"></div>
       </section>
 
-      <section class="container-generator flex glass hide">
-        <section class="container-canvas">
+      <section class="container-generator flex glass hide border">
+        <section class="container-canvas border">
           <div class="header-canvas">
             <h3>title</h3>
             <button onclick="onClearCanvas()">
@@ -61,7 +60,7 @@
           ></canvas>
         </section>
 
-        <section class="container-editor">
+        <section class="container-editor border">
           <label for="title">
             <input
               type="text"
@@ -91,8 +90,11 @@
       </section>
     </main>
 
-    <footer><h2>fdsfvwec</h2></footer>
+    <footer><h3>footer</h3></footer>
 
+    <script src="js/services/gallery.service.js"></script>
+    <script src="js/controller/generator.controller.js"></script>
+    <script src="js/controller/gallery.controller.js"></script>
     <script src="js/controller/app.controller.js"></script>
   </body>
 </html>
