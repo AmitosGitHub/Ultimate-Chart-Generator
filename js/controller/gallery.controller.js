@@ -4,7 +4,7 @@ function renderGalleryChart() {
   const strHTMLs = gGalleryCharts.map(
     (chart) =>
       `
-        <div class="card" onclick="onSelectedChart('${chart.id}')">
+        <div class="card" onclick="onChartSelect('${chart.id}')">
         <img src="style/img/gallery/${chart.url}" />
         </div>`
   )
@@ -15,7 +15,9 @@ function renderGalleryChart() {
   elGallery.innerHTML = strHTMLs.join('')
 }
 
-function onSelectedChart(chartID) {
+function onChartSelect(chartID) {
   console.log('chartID:', chartID)
-  setSelectedChart(chartID)
+  setChartSelect(chartID)
+  drawCharts()
+  onToggle()
 }

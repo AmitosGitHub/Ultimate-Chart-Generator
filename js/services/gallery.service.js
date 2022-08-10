@@ -1,22 +1,46 @@
 'use strict'
 
-var gSelcetedChart
-var gGalleryCharts = [
-  { id: '000', name: 'Bar', url: 'bar.png', rate: 0 },
-  { id: '001', name: 'Line', url: 'line.png', rate: 0 },
-  { id: '002', name: 'Pie', url: 'pie.png', rate: 0 },
-  { id: '003', name: 'Bar-Line', url: 'bar-line.png', rate: 0 },
-  { id: '004', name: 'Area', url: 'area.png', rate: 0 },
-  { id: '005', name: 'Circle', url: 'circle.png', rate: 0 },
-  { id: '006', name: 'Pyramid', url: 'pyramid.png', rate: 0 },
+var gChartSelected
+var gChartNames = [
+  'Bar',
+  'Line',
+  'Pie',
+  'Bar-Line',
+  'Area',
+  'Circle',
+  'Pyramid',
 ]
+var gGalleryCharts
 
-function setSelectedChart(chartID) {
+function createCharts() {
+  let charts = []
+  for (let i = 0; i < 7; i++) {
+    const currChartName = gChartNames[i]
+    const chart = createChart(currChartName)
+    charts.push(chart)
+  }
+  gGalleryCharts = charts
+}
+
+function createChart(chartName) {
+  return {
+    id: makeId(),
+    name: chartName,
+    url: `${chartName}.png`,
+    col: 4,
+  }
+}
+
+function setChartSelect(chartID) {
   const chart = getChartById(chartID)
   console.log('chart:', chart)
-  gSelcetedChart = chart
+  gChartSelected = chart
 }
 
 function getChartById(chartID) {
   return gGalleryCharts.find((chart) => chart.id === chartID)
+}
+
+function getChart() {
+  return gChartSelected
 }

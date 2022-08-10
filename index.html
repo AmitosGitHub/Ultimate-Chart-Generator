@@ -53,11 +53,14 @@
           </div>
 
           <canvas
+            id="my-canvas"
             width="600px"
             height="600px"
             style="outline: 3px solid black"
-            onclick="onFoo(event)"
+            onclick="canvasClicked(event)"
           ></canvas>
+
+          <div class="modal-term" hidden></div>
         </section>
 
         <section class="container-editor border">
@@ -92,6 +95,8 @@
 
     <footer><h3>footer</h3></footer>
 
+    <script src="js/services/util.js"></script>
+    <script src="js/services/generator.service.js"></script>
     <script src="js/services/gallery.service.js"></script>
     <script src="js/controller/generator.controller.js"></script>
     <script src="js/controller/gallery.controller.js"></script>

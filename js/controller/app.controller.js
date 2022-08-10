@@ -2,8 +2,11 @@
 
 function onInit() {
   console.log('hjef')
-  gSelcetedChart = null
+  gChartSelected = null
+  createCharts()
   renderGalleryChart()
+  gElCanvas = document.querySelector('#my-canvas')
+  gCtx = gElCanvas.getContext('2d')
 }
 
 function onToggle() {

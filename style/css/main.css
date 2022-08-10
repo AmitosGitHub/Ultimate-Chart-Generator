@@ -129,7 +129,7 @@ body {
 main {
   max-width: 100%;
 }
-/* gallery */
+/* GALLERY */
 .container-gallery {
   min-width: 100%;
 }
@@ -143,5 +143,20 @@ main {
   /* grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); */
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 5px;
+}
+
+/* EDITOR */
+
+/* canvas */
+canvas#my-canvas {
+  background-color: aliceblue;
+}
+
+/* modal */
+.modal-term {
+  position: fixed;
+  border-radius: 20px;
+  min-width: 80px;
+  min-height: 50px;
 }
 /* MQ */
