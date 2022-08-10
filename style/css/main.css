@@ -76,6 +76,17 @@ body {
 .border {
   border: 2px solid blanchedalmond;
 }
+
+.border-editor {
+  border: 2px solid yellow;
+  border-radius: 20px;
+}
+
+img.editor-img {
+  max-width: 40px;
+  max-height: 40px;
+  cursor: pointer;
+}
 /* layout */
 
 .main-layout {
@@ -188,10 +199,32 @@ main {
   margin-inline-start: 10px;
   flex-basis: 50%;
 }
-.container-generator .container-editor img {
-  max-width: 40px;
+.container-editor .btn-editor {
+  padding: 10px;
+  margin: 10px;
 }
-
+.container-editor .term {
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+}
+.container-editor .term label {
+  margin: 5px;
+}
+.container-editor .term input {
+  border-radius: 10px;
+  min-height: 2em;
+  font-size: 15px;
+}
+.container-editor .term input.value-term {
+  max-width: 80px;
+}
+.container-editor .btn-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+}
 /* canvas */
 canvas#my-canvas {
   background-color: aliceblue;

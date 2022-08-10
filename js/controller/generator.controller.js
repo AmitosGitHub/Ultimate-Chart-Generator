@@ -51,3 +51,41 @@ function closeModal() {
 function onClearCanvas() {
   clearCanvas()
 }
+
+function onChartValueSelect(val) {
+  console.log(val)
+  setChartValueSelect(val)
+}
+
+function onPreview() {
+  console.log('helllooo')
+
+  const elTitle = document.querySelector('#title')
+  const terms = []
+
+  for (let i = 0; i < 3; i++) {
+    const elName = document.querySelector(`.term.term${i + 1} #termName`).value
+    const elValue = document.querySelector(
+      `.term.term${i + 1}  #rangeValue`
+    ).value
+    const elColor = document.querySelector(`.term.term${i + 1} #color`).value
+
+    console.log(elColor, elName, elValue)
+    terms.push({ label: elName, value: elValue, color: elColor })
+  }
+
+  setBuildeChart(elTitle, terms)
+  renderCanvas()
+}
+
+function renderCanvas() {
+  console.log('hellocanvas')
+}
+
+function onDownload() {
+  console.log('helllooo')
+}
+
+function onRemoveTerm() {
+  console.log('helllooo')
+}

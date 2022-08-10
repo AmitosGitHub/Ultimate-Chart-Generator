@@ -48,7 +48,7 @@
           <div class="header-canvas">
             <h3>title</h3>
             <button onclick="onClearCanvas()">
-              <img src="style/img/icon/delete.webp" />
+              <img class="editor-img" src="style/img/icon/delete.webp" />
             </button>
           </div>
 
@@ -64,25 +64,97 @@
         </section>
 
         <section class="container-editor border">
-          <label for="title">
-            <input
-              type="text"
-              id="title"
-              placeholder="insert title..."
-              oninput="onTitleCanvas()"
-            />
-          </label>
-
-          <div class="term term1">
+          <label for="title">Title:</label>
+          <input
+            type="text"
+            id="title"
+            placeholder="insert title..."
+            oninput="onTitleCanvas()"
+          />
+          <div class="btn-editor border-editor">
+            <ul class="btn-editor-list clean-list flex space-between">
+              <li>
+                <button onclick="onChartValueSelect('precent')">
+                  <img class="editor-img" src="style/img/icon/precent.webp" />
+                </button>
+                <button onclick="onChartValueSelect('number')">
+                  <img class="editor-img" src="style/img/icon/numbers.webp" />
+                </button>
+              </li>
+              <li>
+                <button onclick="onPreview()">
+                  <img class="editor-img" src="style/img/icon/play.webp" />
+                </button>
+              </li>
+              <li>
+                <button onclick="onDownload()">
+                  <img class="editor-img" src="style/img/icon/save.webp" />
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="term term1 border-editor">
             <form>
-              <label for="color"><img src="style/img/icon/brush.webp" /></label>
+              <label for="color"
+                ><img class="editor-img" src="style/img/icon/brush.webp"
+              /></label>
               <input type="color" id="color" hidden />
 
               <label for="termName"></label>
-              <input type="name" id="termName" />
+              <input
+                type="name"
+                id="termName"
+                placeholder="The name of term..."
+              />
 
               <label for="rangeValue"></label>
-              <input type="number" id="rangeValue" />
+              <input
+                type="number"
+                id="rangeValue"
+                name="value-term"
+                class="value-term"
+                placeholder="value"
+              />
+
+              <button class="btn-delete" onclick="onRemoveTerm()">X</button>
+            </form>
+          </div>
+          <div class="term term2 border-editor">
+            <form>
+              <label for="color"
+                ><img class="editor-img" src="style/img/icon/brush.webp"
+              /></label>
+              <input type="color" id="color" hidden />
+
+              <label for="termName"></label>
+              <input
+                type="name"
+                id="termName"
+                placeholder="The name of term..."
+              />
+
+              <label for="rangeValue"></label>
+              <input type="number" id="rangeValue" placeholder="value" />
+
+              <button onclick="onRemoveTerm()">X</button>
+            </form>
+          </div>
+          <div class="term term3 border-editor">
+            <form>
+              <label for="color"
+                ><img class="editor-img" src="style/img/icon/brush.webp"
+              /></label>
+              <input type="color" id="color" hidden />
+
+              <label for="termName"></label>
+              <input
+                type="name"
+                id="termName"
+                placeholder="The name of term..."
+              />
+
+              <label for="rangeValue"></label>
+              <input type="number" id="rangeValue" placeholder="value" />
 
               <button onclick="onRemoveTerm()">X</button>
             </form>
