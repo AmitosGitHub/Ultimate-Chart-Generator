@@ -1,0 +1,124 @@
+/* SETUP */
+
+/* vars */
+
+:root {
+  /* color palete */
+
+  /*main-text*/
+  --clr1: #606060;
+
+  /*buttons*/
+  /*page-navigation-buttons*/
+  --clr7: #818181;
+  /*footer-text*/
+
+  /* letter spacing */
+
+  --normal-letter-spacing: 0.03em;
+  --large-letter-spacing: 0.05em;
+
+  /* mq variables */
+
+  --large: 1060px;
+  --medium: 860px;
+  --small: 500px;
+}
+
+/* typography */
+
+@font-face {
+  font-family: eurofurence;
+  src: url(../fonts/eurofurenceregular.ttf);
+}
+
+@font-face {
+  font-family: lato-bold;
+  src: url(../fonts/Lato/Lato-Bold.ttf);
+}
+
+@font-face {
+  font-family: lato-regular;
+  src: url(../fonts/Lato/Lato-Regular.ttf);
+}
+
+/* BASICS */
+
+/* base */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: lato-regular, sans-serif;
+  color: var(--clr1);
+  line-height: 1.25;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-image: url(../img/background/background2.png);
+  background-size: cover;
+}
+
+/* layout */
+
+.main-layout {
+  max-width: var(--large);
+  margin-inline-end: auto;
+  margin-inline-start: auto;
+}
+
+/* helpers */
+
+/* background helpers*/
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(208, 204, 204, 0.183),
+    rgba(164, 158, 158, 0.292)
+  );
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgb(13, 13, 13, 0.37);
+}
+/* flex helpers */
+
+.flex {
+  display: flex;
+}
+
+.flex.space-between {
+  justify-content: space-between;
+}
+
+.flex.align-center {
+  align-items: center;
+}
+
+.flex.column {
+  flex-direction: column;
+}
+
+/* list helpers */
+.clean-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.hide {
+  display: none;
+}
+/* COMPONENTS */
+
+/* gallery */
+.container-gallery .content-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+/* MQ */

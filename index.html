@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultimate Chart Generator</title>
+    <link rel="stylesheet" href="style/css/main.css" />
+  </head>
+  <body onload="onInit()" class="flex column">
+    <header>
+      <div class="main-header flex space-between main-layout glass">
+        <div class="logo">
+          <h1>logo</h1>
+        </div>
+
+        <button onclick="onToggle()">Toggle</button>
+
+        <div class="main-header-nav">
+          <ul class="header-nav-list">
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Generator</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-layout">
+      <section class="container-gallery flex column glass">
+        <div class="header-gallery flex space-between">
+          <label for="search">
+            <input type="search" />
+          </label>
+
+          <ul class="sort-gallery">
+            <li>Bar</li>
+            <li>Line</li>
+            <li>Pizza</li>
+            <li>Area</li>
+          </ul>
+        </div>
+
+        <div class="content-gallery"></div>
+      </section>
+
+      <section class="container-generator flex glass hide">
+        <section class="container-canvas">
+          <div class="header-canvas">
+            <h3>title</h3>
+            <button onclick="onClearCanvas()">
+              <img src="style/img/icon/delete.webp" />
+            </button>
+          </div>
+
+          <canvas
+            width="600px"
+            height="600px"
+            style="outline: 3px solid black"
+            onclick="onFoo(event)"
+          ></canvas>
+        </section>
+
+        <section class="container-editor">
+          <label for="title">
+            <input
+              type="text"
+              id="title"
+              placeholder="insert title..."
+              oninput="onTitleCanvas()"
+            />
+          </label>
+
+          <div class="term term1">
+            <form>
+              <label for="color"><img src="style/img/icon/brush.webp" /></label>
+              <input type="color" id="color" hidden />
+
+              <label for="termName"></label>
+              <input type="name" id="termName" />
+
+              <label for="rangeValue"></label>
+              <input type="number" id="rangeValue" />
+
+              <button onclick="onRemoveTerm()">X</button>
+            </form>
+          </div>
+
+          <button>Add Term</button>
+        </section>
+      </section>
+    </main>
+
+    <footer></footer>
+
+    <script src="js/controller/app.controller.js"></script>
+  </body>
+</html>
