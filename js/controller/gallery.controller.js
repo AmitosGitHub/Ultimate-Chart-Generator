@@ -16,8 +16,8 @@ function renderGalleryChart() {
 }
 
 function onChartSelect(chartID) {
-  console.log('chartID:', chartID)
   setChartSelect(chartID)
   drawCharts()
+  renderEditor()
   onToggle()
 }

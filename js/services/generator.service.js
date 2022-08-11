@@ -1,24 +1,25 @@
 'use strict'
 
+var gChart
 var gChartValueSelect = 'precent'
 var gChartDefulate = [
   {
-    name: 'Shabi',
+    label: 'Shabi',
     rate: 200,
     color: getRandomColor(),
   },
   {
-    name: 'Uza',
+    label: 'Uza',
     rate: 130,
     color: getRandomColor(),
   },
   {
-    name: 'Batz',
+    label: 'Batz',
     rate: 250,
     color: getRandomColor(),
   },
   {
-    name: 'Puki',
+    label: 'Puki',
     rate: 350,
     color: getRandomColor(),
   },
@@ -28,33 +29,24 @@ function clearCanvas() {
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
 }
 
-function setBuildeChart(title, terms) {
+function setBuildeChart(title = 'Title', terms) {
   //TODO dip copy line 42
   gChart = {
-    theme: 'rectangles',
-    title: 'Elections Results',
+    title: title,
     style: {
       font: 'Arial',
       fontSize: '45px',
       backgroundColor: 'transparent',
     },
     valueType: 'percent/value',
-    terms: [
-      {
-        label: 'Puk',
-        value: 50,
-        color: 'pink',
-      },
-
-      {
-        label: 'Muk',
-        value: 50,
-        color: 'green',
-      },
-    ],
+    terms: JSON.parse(JSON.stringify(terms)),
   }
 }
 
 function setChartValueSelect(val) {
   gChartValueSelect = val
+}
+
+function getDefulateChart() {
+  return gChartDefulate
 }

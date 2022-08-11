@@ -238,3 +238,8 @@ canvas#my-canvas {
   min-height: 50px;
 }
 /* MQ */
+
+.container-term {
+  display: flex;
+  flex-direction: column;
+}

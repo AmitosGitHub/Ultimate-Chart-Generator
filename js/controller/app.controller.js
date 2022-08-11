@@ -1,7 +1,6 @@
 'use strict'
 
 function onInit() {
-  console.log('hjef')
   gChartSelected = null
   createCharts()
   renderGalleryChart()

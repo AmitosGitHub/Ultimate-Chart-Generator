@@ -28,12 +28,13 @@ function createChart(chartName) {
     name: chartName,
     url: `${chartName}.png`,
     col: 4,
+    theme: 'rectangles',
   }
 }
 
 function setChartSelect(chartID) {
   const chart = getChartById(chartID)
-  console.log('chart:', chart)
+  // console.log('chart:', chart)
   gChartSelected = chart
 }
 
