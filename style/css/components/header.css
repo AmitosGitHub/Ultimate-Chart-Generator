@@ -1,0 +1,16 @@
+/* COMPONENTS */
+
+/* HEADER */
+header {
+  border-bottom: 1px solid yellow;
+}
+
+.header-nav-list li {
+  border: 1px solid black;
+}
+.header-nav-list li a {
+  min-height: 130px;
+  padding: 10px;
+  color: yellow;
+  font-size: 30px;
+}

@@ -1,0 +1,7 @@
+/* layout */
+
+.main-layout {
+  max-width: var(--large);
+  margin-inline-end: auto;
+  margin-inline-start: auto;
+}

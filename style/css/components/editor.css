@@ -1,0 +1,72 @@
+/* EDITOR */
+.container-generator {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* canvas */
+.container-generator .container-canvas {
+  margin-inline-end: 10px;
+}
+.container-canvas .header-canvas {
+  max-height: 3em;
+}
+.container-canvas .header-canvas h3 {
+  color: antiquewhite;
+  font-size: 30px;
+  margin-inline-start: 20px;
+  margin-block-start: 5px;
+}
+.container-generator .container-canvas img {
+  max-width: 40px;
+}
+canvas#my-canvas {
+  background-color: aliceblue;
+}
+
+/* modal */
+.modal-term {
+  position: fixed;
+  border-radius: 20px;
+  min-width: 80px;
+  min-height: 50px;
+}
+
+/* editor */
+.container-generator .container-editor {
+  margin-inline-start: 10px;
+  flex-basis: 50%;
+}
+.container-editor .btn-editor {
+  padding: 10px;
+  margin: 10px;
+}
+
+/* trem */
+.container-term {
+  display: flex;
+  flex-direction: column;
+}
+.container-editor .term {
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+}
+.container-editor .term label {
+  margin: 5px;
+}
+.container-editor .term input {
+  border-radius: 10px;
+  min-height: 2em;
+  font-size: 15px;
+  text-align: center;
+}
+.container-editor .term input.value-term {
+  max-width: 80px;
+}
+.container-editor .btn-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+}

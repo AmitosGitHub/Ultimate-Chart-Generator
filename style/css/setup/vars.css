@@ -1,0 +1,26 @@
+/* SETUP */
+
+/* vars */
+
+:root {
+  /* color palete */
+
+  /*main-text*/
+  /* --clr1: #606060; */
+
+  /*buttons*/
+  /*page-navigation-buttons*/
+  /* --clr7: #818181; */
+  /*footer-text*/
+
+  /* letter spacing */
+
+  /* --normal-letter-spacing: 0.03em; */
+  /* --large-letter-spacing: 0.05em; */
+
+  /* mq variables */
+
+  --large: 1060px;
+  --medium: 860px;
+  --small: 500px;
+}

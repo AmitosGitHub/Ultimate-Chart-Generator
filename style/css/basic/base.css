@@ -1,0 +1,46 @@
+/* base */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: lato-regular, sans-serif;
+  color: var(--clr1);
+  line-height: 1.25;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-image: url(/style/img/background/background2.png);
+  background-size: cover;
+}
+
+.card {
+  max-width: 220px;
+  max-height: 220px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.border {
+  border: 2px solid blanchedalmond;
+}
+
+.border-editor {
+  border: 2px solid yellow;
+  border-radius: 20px;
+}
+
+img.editor-img {
+  max-width: 40px;
+  max-height: 40px;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}

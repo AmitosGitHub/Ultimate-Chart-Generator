@@ -1,0 +1,40 @@
+/* helpers */
+
+/* background helpers*/
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(208, 204, 204, 0.183),
+    rgba(164, 158, 158, 0.292)
+  );
+  /* backdrop-filter: blur(10px); */
+  box-shadow: 0 8px 32px rgb(13, 13, 13, 0.37);
+}
+/* flex helpers */
+
+.flex {
+  display: flex;
+}
+
+.flex.space-between {
+  justify-content: space-between;
+}
+
+.flex.align-center {
+  align-items: center;
+}
+
+.flex.column {
+  flex-direction: column;
+}
+
+/* list helpers */
+.clean-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.hide {
+  display: none;
+}
