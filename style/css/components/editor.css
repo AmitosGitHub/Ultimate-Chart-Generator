@@ -5,6 +5,7 @@
 }
 
 /* canvas */
+
 .container-generator .container-canvas {
   margin-inline-end: 10px;
 }
@@ -43,9 +44,12 @@ canvas#my-canvas {
 }
 
 /* trem */
+
 .container-term {
   display: flex;
   flex-direction: column;
+  height: 350px;
+  overflow: scroll;
 }
 .container-editor .term {
   padding: 10px;

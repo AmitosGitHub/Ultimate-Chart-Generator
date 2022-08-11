@@ -6,6 +6,16 @@ function onInit() {
   renderGalleryChart()
   gElCanvas = document.querySelector('#my-canvas')
   gCtx = gElCanvas.getContext('2d')
+  drawLineCanvas()
+  window.addEventListener('resize', () => {
+    resizeCanvas()
+
+    if (!gChart) {
+      drawCharts()
+    } else {
+      renderCanvas()
+    }
+  })
 }
 
 function onToggle() {

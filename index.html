@@ -14,12 +14,10 @@
           <h1>Chart-Generator</h1>
         </div>
 
-        <button onclick="onToggle()">Toggle</button>
-
         <div class="main-header-nav">
           <ul class="header-nav-list clean-list flex align-center">
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">Generator</a></li>
+            <li onclick="onToggle()"><a href="#">Gallery</a></li>
+            <li onclick="onToggle()"><a href="#">Generator</a></li>
             <li><a href="#">About</a></li>
           </ul>
         </div>
@@ -88,9 +86,9 @@
                 </button>
               </li>
               <li>
-                <button onclick="onDownload()">
+                <a href="#" onclick="onDownloadCanvas(this)" download="myphoto">
                   <img class="editor-img" src="style/img/icon/save.webp" />
-                </button>
+                </a>
               </li>
             </ul>
 
@@ -100,12 +98,34 @@
               Add Term
             </button>
           </form>
+          <div class="draw-canvas">
+            <label for="inputText"></label>
+            <input
+              type="text"
+              id="inputText"
+              name="input-text"
+              oninput="onDrawText(value)"
+              placeholder="Text..."
+            />
+          </div>
         </section>
       </section>
     </main>
 
     <footer>
       <h3>footer</h3>
+      <div class="input-file">
+        <input
+          type="file"
+          class="file-input-btn"
+          name="image"
+          onchange="onImgInput(event)"
+        />
+
+        <button class="btn-upload" onclick="uploadImg()">📩</button>
+        <p class="user-msg"></p>
+        <div class="share-container"></div>
+      </div>
     </footer>
 
     <script src="js/services/util.js"></script>

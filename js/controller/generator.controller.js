@@ -6,6 +6,7 @@ var gBarWidth = 50
 var gBarSpace = 20
 
 function drawCharts(charts = getDefulateChart()) {
+  clearCanvas()
   charts.forEach((term, idx) => {
     const { color, rate } = term
     gCtx.fillStyle = color
@@ -18,7 +19,7 @@ function drawCharts(charts = getDefulateChart()) {
 function canvasClicked(ev) {
   // TODO: find out if the user clicked a star's bar
   let clickedTerm = null
-  const currTerms = gChart ? gChart.terms : gChartDefulate
+  const currTerms = gChart ? gChart.terms : gChartDefault
   clickedTerm = currTerms.find((term) => {
     return (
       ev.offsetX >= term.x &&
@@ -58,12 +59,11 @@ function onChartValueSelect(val) {
 }
 
 function onPreview(ev) {
-  console.log('ev:', ev)
   ev.preventDefault()
-  const elTitle = document.querySelector('#title')
+  const elTitle = document.querySelector('#title').value
   const terms = []
-  const countCol = gChartSelected.col
-  for (let i = 0; i < countCol; i++) {
+  const countTerm = gChart ? gChart.terms.length : gChartSelected.col
+  for (let i = 0; i < countTerm; i++) {
     const elName = document.querySelector(
       `.term.term${i + 1} #nameTerm${i + 1}`
     ).value
@@ -79,19 +79,20 @@ function onPreview(ev) {
   }
   console.log('terms:', terms)
 
-  setBuildeChart(elTitle, terms)
+  setBuildChart(elTitle, terms)
   renderCanvas()
 }
 
 //render
 function renderCanvas() {
   clearCanvas()
-  console.log('gChart.terms:', gChart.terms)
   drawCharts(gChart.terms)
+  document.querySelector('.header-canvas h3').innerText = `${gChart.title}`
 }
 
 function renderEditor() {
-  const countTerm = gChartSelected.col
+  const countTerm = gChart ? gChart.terms.length : gChartSelected.col
+  console.log('countTerm :', countTerm)
   let strHTML = ''
   for (let i = 0; i < countTerm; i++) {
     strHTML += `
@@ -117,20 +118,41 @@ function renderEditor() {
     </div>
     `
   }
-  console.log(' strHTML:', strHTML)
+
   document.querySelector('form.editor .container-term').innerHTML = strHTML
 }
 
-function onDownload() {
-  console.log('helllooo')
+function renderEditorValue() {
+  const countTerm = gChart.terms.length
+
+  for (let i = 0; i < countTerm; i++) {
+    const currTerm = gChart.terms[i]
+    document.querySelector(`#nameTerm${i + 1}`).value = `${currTerm.label}`
+    document.querySelector(`#rateTerm${i + 1}`).value = `${currTerm.rate}`
+  }
+}
+function onDownloadCanvas(elLink) {
+  doDownload(elLink)
 }
 
-function onRemoveTerm(ev) {
-  ev.stopPropagation()
-  console.log('helllooo')
+function onRemoveTerm(ev, val) {
+  // ev.stopPropagation()
+  ev.preventDefault()
+  stDeleteTerm(val)
+  renderEditor()
+  renderEditorValue()
+  renderCanvas()
 }
 
 function onAddTerm(ev) {
   ev.preventDefault()
-  console.log('helllooo')
+  setAddTerm()
+  renderEditor()
+  renderEditorValue()
+  renderCanvas()
+}
+
+function onDrawText(txt) {
+  console.log(txt)
+  drawText(txt, gElCanvas.width / 2, 20)
 }
