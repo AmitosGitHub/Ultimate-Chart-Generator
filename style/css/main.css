@@ -10,3 +10,8 @@
 @import 'components/gallery.css';
 @import 'components/footer.css';
 @import 'components/screen.css';
+
+body {
+  background-image: url(../img/background/background2.png);
+  background-size: cover;
+}
