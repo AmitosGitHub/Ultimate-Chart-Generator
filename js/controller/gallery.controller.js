@@ -17,7 +17,7 @@ function renderGalleryChart() {
 
 function onChartSelect(chartID) {
   setChartSelect(chartID)
-  drawCharts()
+  drawCharts(gChart.terms)
   renderEditor()
   onToggle()
 }

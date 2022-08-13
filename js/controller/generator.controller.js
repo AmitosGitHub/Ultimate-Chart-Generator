@@ -4,17 +4,7 @@ var gElCanvas
 var gCtx
 var gBarWidth = 50
 var gBarSpace = 20
-
-function drawCharts(charts = getDefulateChart()) {
-  clearCanvas()
-  charts.forEach((term, idx) => {
-    const { color, rate } = term
-    gCtx.fillStyle = color
-    term.y = gElCanvas.height - rate
-    term.x = idx * (gBarSpace + gBarWidth)
-    gCtx.fillRect(term.x, term.y, gBarWidth, rate)
-  })
-}
+var gStartBar = 20
 
 function canvasClicked(ev) {
   // TODO: find out if the user clicked a star's bar
@@ -53,32 +43,54 @@ function onClearCanvas() {
   clearCanvas()
 }
 
-function onChartValueSelect(val) {
-  console.log(val)
-  setChartValueSelect(val)
-}
+function onChartValueSelect(ev, val) {
+  ev.stopPropagation()
+  ev.preventDefault()
+  console.log(ev, val)
 
+  toggleBtnValue(val)
+  setChartValueSelect(val)
+
+  //TODO add symboll % innertext input
+  if (!gChart) return
+  if (val === 'percent') {
+    gChart.terms.forEach((term, idx) => {
+      const InputTerm = getInput(idx)
+      console.log('InputTerm:', InputTerm)
+      const elRate = InputTerm.elRate
+      console.log('elRate:', elRate)
+      // elRate.value = `${elRate.value} $`
+    })
+  }
+}
+function toggleBtnValue(val) {
+  if (val === 'percent') {
+    document
+      .querySelector('ul.btn-editor-list button.percent')
+      .classList.add('border-value-btn')
+
+    document
+      .querySelector('ul.btn-editor-list button.number')
+      .classList.remove('border-value-btn')
+  } else {
+    document
+      .querySelector('ul.btn-editor-list button.number')
+      .classList.add('border-value-btn')
+
+    document
+      .querySelector('ul.btn-editor-list button.percent')
+      .classList.remove('border-value-btn')
+  }
+}
 function onPreview(ev) {
   ev.preventDefault()
   const elTitle = document.querySelector('#title').value
   const terms = []
   const countTerm = gChart ? gChart.terms.length : gChartSelected.col
   for (let i = 0; i < countTerm; i++) {
-    const elName = document.querySelector(
-      `.term.term${i + 1} #nameTerm${i + 1}`
-    ).value
-    const elRate = document.querySelector(
-      `.term.term${i + 1}  #rateTerm${i + 1}`
-    ).value
-    const elColor = document.querySelector(
-      `.term.term${i + 1} #colorTerm${i + 1}`
-    ).value
-
-    console.log(elColor, elName, elRate)
-    terms.push({ label: elName, rate: elRate, color: elColor })
+    const dataTerm = getDatafromInput(i + 1)
+    terms.push(dataTerm)
   }
-  console.log('terms:', terms)
-
   setBuildChart(elTitle, terms)
   renderCanvas()
 }
@@ -87,7 +99,7 @@ function onPreview(ev) {
 function renderCanvas() {
   clearCanvas()
   drawCharts(gChart.terms)
-  document.querySelector('.header-canvas h3').innerText = `${gChart.title}`
+  drawText(gChart.title, 30, 30)
 }
 
 function renderEditor() {
@@ -97,10 +109,9 @@ function renderEditor() {
   for (let i = 0; i < countTerm; i++) {
     strHTML += `
     <div class="term term${i + 1} border-editor">
-        <label for="colorTerm${i + 1}">
-        <img class="editor-img" src="style/img/icon/brush.webp"/>
-        </label>
-        <input type="color" id="colorTerm${i + 1}" hidden />
+
+        <label for="colorTerm${i + 1}"></label>
+        <input type="color" id="colorTerm${i + 1}"  />
 
         <label for="nameTerm${i + 1}"></label>
          <input type="name" id="nameTerm${
@@ -112,9 +123,14 @@ function renderEditor() {
            i + 1
          }" name="value-term" class="value-term" placeholder="value"/>
        
+        <button class="btn-update" onclick="onUpdateTerm(event,'${
+          i + 1
+        }')"> Update </button>
+
         <button class="btn-delete" onclick="onRemoveTerm(event,'${
           i + 1
         }')"> X </button>
+
     </div>
     `
   }
@@ -127,8 +143,14 @@ function renderEditorValue() {
 
   for (let i = 0; i < countTerm; i++) {
     const currTerm = gChart.terms[i]
-    document.querySelector(`#nameTerm${i + 1}`).value = `${currTerm.label}`
-    document.querySelector(`#rateTerm${i + 1}`).value = `${currTerm.rate}`
+    // document.querySelector(`#nameTerm${i + 1}`).value = `${currTerm.label}`
+    // document.querySelector(`#rateTerm${i + 1}`).value = `${currTerm.rate}`
+    const inputTerm = getInput(idx)
+    console.log(' inputTerm:', inputTerm)
+    console.log(' inputTerm.label.value:', inputTerm.label.value)
+    inputTerm.label.value = `${currTerm.label}`
+    inputTerm.rate.value = `${currTerm.rate}`
+    inputTerm.color.value = `${currTerm.color}`
   }
 }
 function onDownloadCanvas(elLink) {
@@ -138,12 +160,21 @@ function onDownloadCanvas(elLink) {
 function onRemoveTerm(ev, val) {
   // ev.stopPropagation()
   ev.preventDefault()
-  stDeleteTerm(val)
+  setDeleteTerm(val)
   renderEditor()
   renderEditorValue()
   renderCanvas()
 }
 
+function onUpdateTerm(ev, idx) {
+  console.log('hellooo')
+  ev.preventDefault()
+  const dataInput = getDatafromInput(idx)
+  setUpdateTerm(idx, dataInput)
+  renderEditor()
+  renderEditorValue()
+  renderCanvas()
+}
 function onAddTerm(ev) {
   ev.preventDefault()
   setAddTerm()
@@ -152,7 +183,21 @@ function onAddTerm(ev) {
   renderCanvas()
 }
 
-function onDrawText(txt) {
-  console.log(txt)
-  drawText(txt, gElCanvas.width / 2, 20)
+function onDrawLabelText(txt) {
+  DrawLabelText(txt)
+}
+
+function getDatafromInput(idx) {
+  const label = document.querySelector(`.term.term${idx} #nameTerm${idx}`).value
+  const rate = document.querySelector(`.term.term${idx}  #rateTerm${idx}`).value
+  const color = document.querySelector(
+    `.term.term${idx} #colorTerm${idx}`
+  ).value
+  return { label, rate, color }
+}
+function getInput(idx) {
+  const elLabel = document.querySelector(`.term.term${idx} #nameTerm${idx}`)
+  const elRate = document.querySelector(`.term.term${idx}  #rateTerm${idx}`)
+  const elColor = document.querySelector(`.term.term${idx} #colorTerm${idx}`)
+  return { elLabel, elRate, elColor }
 }

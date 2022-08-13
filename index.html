@@ -73,10 +73,16 @@
 
             <ul class="btn-editor-list clean-list flex space-between">
               <li>
-                <button onclick="onChartValueSelect('precent')">
+                <button
+                  onclick="onChartValueSelect(event,'percent')"
+                  class="percent border-value-btn"
+                >
                   <img class="editor-img" src="style/img/icon/precent.webp" />
                 </button>
-                <button onclick="onChartValueSelect('number')">
+                <button
+                  onclick="onChartValueSelect(event,'number')"
+                  class="number"
+                >
                   <img class="editor-img" src="style/img/icon/numbers.webp" />
                 </button>
               </li>
@@ -104,7 +110,7 @@
               type="text"
               id="inputText"
               name="input-text"
-              oninput="onDrawText(value)"
+              oninput="onDrawLabelText(value)"
               placeholder="Text..."
             />
           </div>
@@ -130,6 +136,7 @@
 
     <script src="js/services/util.js"></script>
     <script src="js/services/generator.service.js"></script>
+    <script src="js/services/canvas.service.js"></script>
     <script src="js/services/gallery.service.js"></script>
     <script src="js/controller/generator.controller.js"></script>
     <script src="js/controller/gallery.controller.js"></script>

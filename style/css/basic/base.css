@@ -44,3 +44,7 @@ img.editor-img {
 a {
   text-decoration: none;
 }
+
+.border-value-btn {
+  outline: 4px solid greenyellow;
+}
