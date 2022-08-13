@@ -11,6 +11,8 @@
 @import 'components/footer.css';
 @import 'components/screen.css';
 
+@import 'mq/mq.css';
+
 body {
   background-image: url(../img/background/background2.png);
   background-size: cover;

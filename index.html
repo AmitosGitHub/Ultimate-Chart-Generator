@@ -21,12 +21,16 @@
             <li><a href="#">About</a></li>
           </ul>
         </div>
+
+        <div class="hamburger-menu" onclick="onToggleHamburger()">
+          <img src="style/img/icon/hamburger.webp" />
+        </div>
       </div>
     </header>
 
-    <main class="border">
+    <main class="border main-layout">
       <section class="container-gallery flex column glass border">
-        <div class="header-gallery flex space-between">
+        <div class="header-gallery flex space-between main-layout">
           <label for="search"></label>
           <input type="search" id="search" placeholder="search..." />
 
@@ -118,19 +122,21 @@
       </section>
     </main>
 
-    <footer>
-      <h3>footer</h3>
-      <div class="input-file">
-        <input
-          type="file"
-          class="file-input-btn"
-          name="image"
-          onchange="onImgInput(event)"
-        />
+    <footer class="border main-layout">
+      <div class="main-footer main-layout border">
+        <h3>footer</h3>
+        <div class="input-file">
+          <input
+            type="file"
+            class="file-input-btn"
+            name="image"
+            onchange="onImgInput(event)"
+          />
 
-        <button class="btn-upload" onclick="uploadImg()">📩</button>
-        <p class="user-msg"></p>
-        <div class="share-container"></div>
+          <button class="btn-upload" onclick="uploadImg()">📩</button>
+          <p class="user-msg"></p>
+          <div class="share-container"></div>
+        </div>
       </div>
     </footer>
 

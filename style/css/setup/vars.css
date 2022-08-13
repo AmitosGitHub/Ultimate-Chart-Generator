@@ -5,12 +5,19 @@
 :root {
   /* color palete */
 
-  /*main-text*/
-  /* --clr1: #606060; */
+  /*main-text-header*/
+  --clr1: rgb(225, 225, 74);
+  /*main-text-header*/
+  --clr5: yellow;
 
-  /*buttons*/
-  /*page-navigation-buttons*/
-  /* --clr7: #818181; */
+  /*borders*/
+  /*border-cliced button*/
+  --clr2: greenyellow;
+
+  /*border-main*/
+  --clr3: blanchedalmond;
+  /*border-card*/
+  --clr4: rgb(46, 45, 45);
   /*footer-text*/
 
   /* letter spacing */
@@ -21,6 +28,7 @@
   /* mq variables */
 
   --large: 1060px;
-  --medium: 860px;
+  --medium: 900px;
   --small: 500px;
+  --extraSmall: 380px;
 }

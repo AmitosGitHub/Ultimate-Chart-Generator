@@ -16,8 +16,6 @@ body {
   font-size: 1rem;
   min-width: 100vw;
   min-height: 100vh;
-  /* background-image: url(/style/img/background/background2.png);
-  background-size: cover; */
 }
 
 .card {
@@ -28,11 +26,11 @@ body {
 }
 
 .border {
-  border: 2px solid blanchedalmond;
+  border: 2px solid var(--clr3);
 }
 
 .border-editor {
-  border: 2px solid yellow;
+  border: 2px solid var(--clr1);
   border-radius: 20px;
 }
 
@@ -46,5 +44,10 @@ a {
 }
 
 .border-value-btn {
-  outline: 4px solid greenyellow;
+  outline: 4px solid var(--clr2);
+}
+
+footer {
+  min-width: 100vw;
+  min-height: 130px;
 }

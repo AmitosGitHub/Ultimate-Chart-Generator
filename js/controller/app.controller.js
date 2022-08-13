@@ -26,3 +26,7 @@ function onToggle() {
   document.querySelector('.container-generator').classList.toggle('hide')
   document.querySelector('.container-gallery').classList.toggle('hide')
 }
+
+function onToggleHamburger() {
+  document.querySelector('.main-header-nav').classList.toggle('open-menu')
+}
