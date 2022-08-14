@@ -21,3 +21,13 @@ function onChartSelect(chartID) {
   renderEditor()
   onToggle()
 }
+
+function onFilterByName(chartName) {
+  setFilter(chartName)
+  renderGalleryChart()
+}
+
+function onAllGallery() {
+  createGalleryCharts()
+  renderGalleryChart()
+}

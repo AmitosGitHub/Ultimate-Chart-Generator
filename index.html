@@ -34,11 +34,15 @@
           <label for="search"></label>
           <input type="search" id="search" placeholder="search..." />
 
+          <button onclick="onAllGallery()">
+            <img src="style/img/icon/back.webp" />
+          </button>
+
           <ul class="sort-gallery clean-list flex">
-            <li>Bar</li>
-            <li>Line</li>
-            <li>Pizza</li>
-            <li>Area</li>
+            <li onclick="onFilterByName('bar')">Bar</li>
+            <li onclick="onFilterByName('line')">Line</li>
+            <li onclick="onFilterByName('pizza')">Pizza</li>
+            <li onclick="onFilterByName('area')">Area</li>
           </ul>
         </div>
 

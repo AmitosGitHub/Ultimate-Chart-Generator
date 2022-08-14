@@ -14,6 +14,7 @@ var gChartNames = [
   { name: 'pyramid', col: 3, theme: 'rectangles' },
 ]
 var gGalleryCharts
+var gFilterName
 
 function createGalleryCharts() {
   let charts = []
@@ -47,4 +48,15 @@ function getChartById(chartID) {
 
 function getChart() {
   return gChartSelected
+}
+
+function setFilter(chartName) {
+  gFilterName = chartName
+  setFilterByName()
+}
+
+function setFilterByName() {
+  console.log('gGalleryCharts:', gGalleryCharts)
+  gGalleryCharts = gGalleryCharts.filter((chart) => chart.name === gFilterName)
+  console.log('gGalleryCharts:', gGalleryCharts)
 }

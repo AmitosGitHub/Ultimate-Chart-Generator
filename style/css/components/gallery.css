@@ -46,3 +46,8 @@ main {
 .container-gallery .content-gallery img {
   min-height: 150px;
 }
+
+main .container-gallery .header-gallery button img {
+  height: 40px;
+  width: 40px;
+}
