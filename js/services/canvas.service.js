@@ -4,16 +4,16 @@
 
 function drawCharts(charts = getDefaultChart()) {
   clearCanvas()
+  gBarWidth = 50
+  gBarSpace = 20
+  gStartBar = 20
   charts.forEach((term, idx) => {
     const { color, rate } = term
     const convertRate =
       gChartValueSelect === 'percent'
-        ? (gElCanvas.height * rate) / 100
+        ? (gElCanvas.width * rate) / 100
         : gElCanvas.height * getConvertRateNum(rate)
-    gCtx.fillStyle = color
-    // term.y = gElCanvas.height - convertRate
-    // term.x = idx * (gBarSpace + gBarWidth)
-    // gCtx.fillRect(term.x, term.y, gBarWidth, convertRate)
+
     switchGraph(term, color, convertRate, idx)
   })
 }
@@ -32,15 +32,10 @@ function switchGraph(term, color, convertRate, idx) {
       drawGraphScatter(term, color, convertRate, idx)
       break
     case 'bubble':
-      console.log('helloo bubble')
-      console.log(
-        'term, color, convertRate, idx:',
-        term,
-        color,
-        convertRate,
-        idx
-      )
       drawGraphBubble(term, color, convertRate, idx)
+      break
+    case 'bar-Line':
+      drawGraphBarLine(term, color, convertRate, idx)
       break
     default:
       drawGraphBar(term, color, convertRate, idx)
@@ -56,28 +51,36 @@ function drawGraphBar(term, color, convertRate, idx) {
 }
 
 function drawGraphFullScreen(term, color, convertRate, idx) {
+  console.log('convertRate:', convertRate)
+  gBarSpace = 0
   term.y = 0
-  term.x = gStartBar
+  term.x = gStartBar === 20 ? 0 : gStartBar
   gCtx.fillStyle = color
   gCtx.fillRect(term.x, term.y, convertRate, gElCanvas.height)
-  gStartBar = convertRate
+  gStartBar += convertRate
 }
 
 function drawGraphScatter(term, color, convertRate, idx) {
+  gBarWidth = 10
+  gBarSpace = 50
   term.y = gElCanvas.height - convertRate
   term.x = idx * (gBarSpace + gBarWidth)
+  term.x = term.x === 0 ? 10 : term.x
   gCtx.fillStyle = color
   drawArc(term.x, term.y)
 }
 
 function drawGraphBubble(term, color, convertRate, idx) {
-  console.log('hello func bubble')
-  gBarWidth = convertRate
-  gStartBar = gStartBar === 20 ? 20 : +convertRate
+  gBarWidth = convertRate / 2
+  gStartBar += gBarWidth
   gCtx.fillStyle = color
-  console.log('gStartBar, gElCanvas / 2:', gStartBar, gElCanvas / 2)
   drawArc(gStartBar, gElCanvas.height / 2)
-  gStartBar += convertRate
+  gStartBar = gStartBar + gBarWidth
+}
+
+function drawGraphBarLine(term, color, convertRate, idx) {
+  drawGraphBar(term, color, convertRate, idx)
+  drawGraphScatter(term, color, convertRate, idx)
 }
 
 function getConvertRateNum(rate) {
@@ -132,7 +135,7 @@ function drawArc(x, y) {
   gCtx.beginPath()
   gCtx.lineWidth = 1
   gCtx.arc(x, y, gBarWidth, 0, 2 * Math.PI)
-  //   gCtx.fillStyle = 'blue'
+
   gCtx.fill()
   gCtx.strokeStyle = 'black'
   gCtx.stroke()

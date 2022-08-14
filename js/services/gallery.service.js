@@ -3,14 +3,15 @@
 var gChartSelected
 var gChartNames = [
   { name: 'bar', col: 4, theme: 'rectangles' },
+  { name: 'scatter', col: 4, theme: 'circle' },
+  { name: 'bubble', col: 3, theme: 'circle' },
+  { name: 'bar-Line', col: 4, theme: 'rectangles' },
+  { name: 'full-screen', col: 3, theme: 'rectangles' },
   { name: 'line', col: 4, theme: 'line' },
   { name: 'pie', col: 4, theme: 'circle' },
-  { name: 'bar-Line', col: 4, theme: 'rectangles' },
   { name: 'area', col: 2, theme: 'area' },
   { name: 'circle', col: 3, theme: 'circle' },
   { name: 'pyramid', col: 3, theme: 'rectangles' },
-  { name: 'full-screen', col: 3, theme: 'rectangles' },
-  { name: 'bubble', col: 3, theme: 'circle' },
 ]
 var gGalleryCharts
 
