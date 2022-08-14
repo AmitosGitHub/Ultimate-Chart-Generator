@@ -3,22 +3,16 @@
 function onInit() {
   gChartSelected = null
   gChartDefaults = createDefaultCharts()
-  console.log(' gChartDefaults:', gChartDefaults)
-  gChart = createChart('gChart', gChartDefaults)
-  console.log('gChart:', gChart)
+  gChart = createChart('Default', gChartDefaults)
   createGalleryCharts()
   renderGalleryChart()
+
   gElCanvas = document.querySelector('#my-canvas')
   gCtx = gElCanvas.getContext('2d')
   drawBoardCanvas()
   window.addEventListener('resize', () => {
     resizeCanvas()
-
-    if (!gChart) {
-      drawCharts()
-    } else {
-      renderCanvas()
-    }
+    renderCanvas()
   })
 }
 

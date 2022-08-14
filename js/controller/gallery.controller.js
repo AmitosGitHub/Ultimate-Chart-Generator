@@ -4,20 +4,18 @@ function renderGalleryChart() {
   const strHTMLs = gGalleryCharts.map(
     (chart) =>
       `
-        
         <img src="style/img/gallery/${chart.url}" onclick="onChartSelect('${chart.id}')" class="card"/>
         `
   )
-
   const elGallery = document.querySelector('.content-gallery')
-
-  //   console.log(strHTMLs.join(''))
   elGallery.innerHTML = strHTMLs.join('')
 }
 
 function onChartSelect(chartID) {
   setChartSelect(chartID)
-  drawCharts(gChart.terms)
+  isDoneSearch = true
+  clearInputSearch()
+  renderCanvas()
   renderEditor()
   onToggle()
 }
@@ -30,4 +28,11 @@ function onFilterByName(chartName) {
 function onAllGallery() {
   createGalleryCharts()
   renderGalleryChart()
+}
+
+function onInputSearch(val) {
+  isDoneSearch = false
+  setFilterInputSearch(val)
+  renderGalleryChart()
+  clearInputSearch()
 }

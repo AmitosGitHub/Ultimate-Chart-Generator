@@ -2,7 +2,7 @@
 
 // ********CANVAS**************
 
-function drawCharts(charts = getDefaultChart()) {
+function drawCharts(charts = gChart.terms) {
   clearCanvas()
   gBarWidth = 50
   gBarSpace = 20

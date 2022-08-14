@@ -3,8 +3,9 @@
 var gChart
 var gChartValueSelect = 'percent'
 var gChartDefaults
+var isUserChart = false
 
-function setBuildChart(title = 'Title', terms) {
+function setBuildChart(title = 'Hello', terms) {
   gChart = {
     title: title,
     style: {
@@ -52,7 +53,6 @@ function getDefaultChart() {
 function setDeleteTerm(val) {
   const idx = val - 1
   gChart.terms.splice(idx, 1)
-  console.log('gChart.terms:', gChart.terms)
 }
 function setUpdateTerm(idx, dataInput) {
   gChart.terms[idx - 1]
@@ -64,7 +64,7 @@ function setAddTerm() {
   gChart.terms.push({ label: 'label', rate: 10, color: 'red' })
 }
 
-function createChart(title = 'Title', newTerms) {
+function createChart(title = 'Hello', newTerms) {
   return {
     title: title,
     style: {
@@ -75,4 +75,11 @@ function createChart(title = 'Title', newTerms) {
     valueType: gChartValueSelect,
     terms: JSON.parse(JSON.stringify(newTerms)),
   }
+}
+
+function getInputlName(term) {
+  return isUserChart ? term.label : ''
+}
+function getInputlRate(term) {
+  return isUserChart ? term.rate : ''
 }

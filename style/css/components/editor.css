@@ -1,16 +1,17 @@
 /* EDITOR */
-main .container-generator .hide {
+main section.container-generator.hide {
   display: none;
 }
 .container-generator {
-  max-width: 100%;
-  max-height: 100%;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 /* canvas */
 
 .container-generator .container-canvas {
   margin-inline-end: 10px;
+  width: 50%;
 }
 .container-canvas .header-canvas {
   max-height: 3em;
@@ -21,9 +22,7 @@ main .container-generator .hide {
   margin-inline-start: 20px;
   margin-block-start: 5px;
 }
-.container-generator .container-canvas img {
-  max-width: 40px;
-}
+
 canvas#my-canvas {
   background-color: aliceblue;
 }
@@ -40,7 +39,7 @@ canvas#my-canvas {
 /* editor */
 .container-generator .container-editor {
   margin-inline-start: 10px;
-  flex-basis: 50%;
+  width: 50%;
 }
 .container-editor .btn-editor {
   padding: 10px;

@@ -15,6 +15,7 @@ var gChartNames = [
 ]
 var gGalleryCharts
 var gFilterName
+var isDoneSearch = true
 
 function createGalleryCharts() {
   let charts = []
@@ -56,7 +57,20 @@ function setFilter(chartName) {
 }
 
 function setFilterByName() {
-  console.log('gGalleryCharts:', gGalleryCharts)
   gGalleryCharts = gGalleryCharts.filter((chart) => chart.name === gFilterName)
-  console.log('gGalleryCharts:', gGalleryCharts)
+}
+
+function setFilterInputSearch(val) {
+  gGalleryCharts = gGalleryCharts.filter(
+    (chart) => chart.name.substring(0, val.length) === val
+  )
+}
+
+function clearInputSearch() {
+  const elInput = document.querySelector('#search')
+
+  if (isDoneSearch || !elInput.value) {
+    document.querySelector('#search').value = ''
+    onAllGallery()
+  }
 }

@@ -1,7 +1,8 @@
 /* Main */
 main {
   /* max-width: 100%; */
-  min-width: var(--large);
+  /* min-width: var(--large); */
+  width: 100%;
   min-height: 80%;
   margin-inline-end: auto;
   margin-inline-start: auto;
@@ -36,6 +37,7 @@ main .container-gallery .hide {
   color: orange;
   font-size: 20px;
   margin: 20px;
+  cursor: pointer;
 }
 
 .container-gallery .header-gallery {

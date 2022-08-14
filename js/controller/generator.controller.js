@@ -103,39 +103,42 @@ function renderCanvas() {
 }
 
 function renderEditor() {
-  const countTerm = gChart ? gChart.terms.length : gChartSelected.col
-  console.log('countTerm :', countTerm)
-  let strHTML = ''
-  for (let i = 0; i < countTerm; i++) {
-    strHTML += `
-    <div class="term term${i + 1} border-editor">
+  const strHTMLs = gChart.terms.map(
+    (term, idx) =>
+      `
+        <div class="term term${idx + 1} border-editor">
 
-        <label for="colorTerm${i + 1}"></label>
-        <input type="color" id="colorTerm${i + 1}"  />
+            <label for="colorTerm${idx + 1}"></label>
+            <input type="color" id="colorTerm${idx + 1}" />
 
-        <label for="nameTerm${i + 1}"></label>
-         <input type="name" id="nameTerm${
-           i + 1
-         }" placeholder="The name of term..."/>
-       
-         <label for="rateTerm${i + 1}"></label>
-         <input type="number" id="rateTerm${
-           i + 1
-         }" name="value-term" class="value-term" placeholder="value"/>
-       
-        <button class="btn-update" onclick="onUpdateTerm(event,'${
-          i + 1
-        }')"> Update </button>
+            <label for="nameTerm${idx + 1}"></label>
+             <input type="name" id="nameTerm${idx + 1}"
+              placeholder="The name of term..."
+              value="${getInputlName(term)}"/>
+           
+             <label for="rateTerm${idx + 1}"></label>
+             <input type="number" id="rateTerm${idx + 1}"
+              name="value-term" class="value-term" placeholder="value"
+              value="${getInputlRate(term)}"/>
+           
+            <button class="btn-update" onclick="onUpdateTerm(event,'${
+              idx + 1
+            }')">
+             Update
+             </button>
 
-        <button class="btn-delete" onclick="onRemoveTerm(event,'${
-          i + 1
-        }')"> X </button>
+            <button class="btn-delete" onclick="onRemoveTerm(event,'${
+              idx + 1
+            }')">
+             X
+             </button>
 
-    </div>
-    `
-  }
+        </div>
+        `
+  )
 
-  document.querySelector('form.editor .container-term').innerHTML = strHTML
+  document.querySelector('form.editor .container-term').innerHTML =
+    strHTMLs.join('')
 }
 
 function renderEditorValue() {
