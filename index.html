@@ -79,6 +79,8 @@
           ></canvas>
 
           <div class="modal-term" hidden></div>
+
+          <div class="modal-flash-msg"></div>
         </section>
 
         <section class="border container-editor">
@@ -178,6 +180,7 @@
               oninput="onDrawLabelText(value)"
               placeholder="Text..."
             />
+            <button onclick="onAddTxtLabel()">Add Text</button>
           </div>
         </section>
       </section>
@@ -191,7 +194,9 @@
 
     <script src="js/services/util.js"></script>
     <script src="js/services/generator.service.js"></script>
+    <script src="js/services/canvas-touch.service.js"></script>
     <script src="js/services/canvas.service.js"></script>
+    <script src="js/services/canvas.controler.service.js"></script>
     <script src="js/services/gallery.service.js"></script>
     <script src="js/controller/generator.controller.js"></script>
     <script src="js/controller/gallery.controller.js"></script>

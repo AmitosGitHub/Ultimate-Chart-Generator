@@ -59,3 +59,16 @@ footer {
   min-height: 130px;
   background-color: var(--clr3);
 }
+
+.modal-flash-msg {
+  display: none;
+  width: 100px;
+  height: 50px;
+  background-color: var(--clr4);
+  color: var(--clr1);
+  font-size: 20px;
+}
+
+.modal-flash-msg.open {
+  display: block;
+}

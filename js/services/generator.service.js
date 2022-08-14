@@ -56,9 +56,7 @@ function setDeleteTerm(val) {
 }
 function setUpdateTerm(idx, dataInput) {
   gChart.terms[idx - 1]
-  console.log('gChart.terms[idx - 1]:', gChart.terms[idx - 1])
   gChart.terms[idx - 1] = JSON.parse(JSON.stringify(dataInput))
-  console.log('gChart.terms[idx - 1]:', gChart.terms[idx - 1])
 }
 function setAddTerm() {
   gChart.terms.push({ label: 'label', rate: 10, color: 'red' })
@@ -82,4 +80,7 @@ function getInputlName(term) {
 }
 function getInputlRate(term) {
   return isUserChart ? term.rate : ''
+}
+function getInputlColor(term) {
+  return isUserChart ? term.color : ''
 }

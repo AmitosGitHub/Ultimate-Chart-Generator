@@ -46,7 +46,6 @@ function onClearCanvas() {
 function onChartValueSelect(ev, val) {
   ev.stopPropagation()
   ev.preventDefault()
-  console.log(ev, val)
 
   toggleBtnValue(val)
   setChartValueSelect(val)
@@ -109,7 +108,8 @@ function renderEditor() {
         <div class="term term${idx + 1} border-editor">
 
             <label for="colorTerm${idx + 1}"></label>
-            <input type="color" id="colorTerm${idx + 1}" />
+            <input type="color" id="colorTerm${idx + 1}"  
+            value="${getInputlColor(term)}"/>
 
             <label for="nameTerm${idx + 1}"></label>
              <input type="name" id="nameTerm${idx + 1}"
@@ -141,21 +141,6 @@ function renderEditor() {
     strHTMLs.join('')
 }
 
-function renderEditorValue() {
-  const countTerm = gChart.terms.length
-
-  for (let i = 0; i < countTerm; i++) {
-    const currTerm = gChart.terms[i]
-    // document.querySelector(`#nameTerm${i + 1}`).value = `${currTerm.label}`
-    // document.querySelector(`#rateTerm${i + 1}`).value = `${currTerm.rate}`
-    const inputTerm = getInput(idx)
-    console.log(' inputTerm:', inputTerm)
-    console.log(' inputTerm.label.value:', inputTerm.label.value)
-    inputTerm.label.value = `${currTerm.label}`
-    inputTerm.rate.value = `${currTerm.rate}`
-    inputTerm.color.value = `${currTerm.color}`
-  }
-}
 function onDownloadCanvas(elLink) {
   doDownload(elLink)
 }
@@ -165,24 +150,22 @@ function onRemoveTerm(ev, val) {
   ev.preventDefault()
   setDeleteTerm(val)
   renderEditor()
-  renderEditorValue()
   renderCanvas()
 }
 
 function onUpdateTerm(ev, idx) {
-  console.log('hellooo')
   ev.preventDefault()
   const dataInput = getDatafromInput(idx)
   setUpdateTerm(idx, dataInput)
   renderEditor()
-  renderEditorValue()
   renderCanvas()
+  flashMsg('modal-flash-msg', 'Update')
 }
+
 function onAddTerm(ev) {
   ev.preventDefault()
   setAddTerm()
   renderEditor()
-  renderEditorValue()
   renderCanvas()
 }
 

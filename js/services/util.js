@@ -26,3 +26,12 @@ function makeId(length = 5) {
   }
   return txt
 }
+
+function flashMsg(element, msg) {
+  const elMsg = document.querySelector(`.${element}`)
+  elMsg.innerText = msg
+  elMsg.classList.add('open')
+  setTimeout(() => {
+    elMsg.classList.remove('open')
+  }, 3000)
+}

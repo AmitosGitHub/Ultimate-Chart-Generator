@@ -13,7 +13,6 @@ function renderGalleryChart() {
 
 function onChartSelect(chartID) {
   setChartSelect(chartID)
-  isDoneSearch = true
   clearInputSearch()
   renderCanvas()
   renderEditor()
