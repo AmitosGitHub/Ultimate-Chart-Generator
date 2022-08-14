@@ -4,23 +4,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ultimate Chart Generator</title>
+    <title>Chart Generator</title>
     <link rel="stylesheet" href="style/css/main.css" />
   </head>
+
   <body onload="onInit()" class="flex column">
     <header>
-      <div class="main-header flex space-between main-layout glass border">
+      <div class="flex space-between main-header main-layout">
         <div class="logo">
           <h1>Chart-Generator</h1>
         </div>
 
-        <div class="main-header-nav">
-          <ul class="header-nav-list clean-list flex align-center">
-            <li onclick="onToggle()"><a href="#">Gallery</a></li>
-            <li onclick="onToggle()"><a href="#">Generator</a></li>
-            <li><a href="#">About</a></li>
+        <nav class="main-header-nav">
+          <ul class="clean-list flex align-center header-nav-list">
+            <li onclick="onToggle()">
+              <a href="#">Gallery</a>
+            </li>
+            <li onclick="onToggle()">
+              <a href="#">Generator</a>
+            </li>
+            <li>
+              <a href="#">About</a>
+            </li>
           </ul>
-        </div>
+        </nav>
 
         <div class="hamburger-menu" onclick="onToggleHamburger()">
           <img src="style/img/icon/hamburger.webp" />
@@ -29,16 +36,23 @@
     </header>
 
     <main class="border main-layout">
-      <section class="container-gallery flex column glass border">
-        <div class="header-gallery flex space-between main-layout">
-          <label for="search"></label>
-          <input type="search" id="search" placeholder="search..." />
+      <section class="flex column glass border container-gallery">
+        <div class="flex space-between header-gallery main-layout">
+          <div class="search">
+            <label for="search">
+              <img
+                src="style/img/icon/serach.webp"
+                class="btn-img btn-serach"
+              />
+            </label>
+            <input type="search" id="search" placeholder="search..." />
+          </div>
 
           <button onclick="onAllGallery()">
-            <img src="style/img/icon/back.webp" />
+            <img src="style/img/icon/back.webp" class="btn-img" />
           </button>
 
-          <ul class="sort-gallery clean-list flex">
+          <ul class="clean-list flex sort-gallery">
             <li onclick="onFilterByName('bar')">Bar</li>
             <li onclick="onFilterByName('line')">Line</li>
             <li onclick="onFilterByName('pizza')">Pizza</li>
@@ -49,15 +63,8 @@
         <div class="content-gallery border"></div>
       </section>
 
-      <section class="container-generator flex glass hide border">
-        <section class="container-canvas border">
-          <div class="header-canvas flex space-between">
-            <h3>Default</h3>
-            <button onclick="onClearCanvas()">
-              <img class="editor-img" src="style/img/icon/delete.webp" />
-            </button>
-          </div>
-
+      <section class="flex glass border container-generator hide">
+        <section class="border container-canvas">
           <canvas
             id="my-canvas"
             width="500px"
@@ -69,9 +76,9 @@
           <div class="modal-term" hidden></div>
         </section>
 
-        <section class="container-editor border">
-          <form class="editor border-editor">
-            <label for="title">Title:</label>
+        <section class="border container-editor">
+          <form class="border-editor editor">
+            <label for="title"></label>
             <input
               type="text"
               id="title"
@@ -79,39 +86,84 @@
               oninput="onTitleCanvas()"
             />
 
-            <ul class="btn-editor-list clean-list flex space-between">
+            <ul class="clean-list flex space-between btn-editor-list">
               <li>
                 <button
                   onclick="onChartValueSelect(event,'percent')"
                   class="percent border-value-btn"
                 >
-                  <img class="editor-img" src="style/img/icon/precent.webp" />
+                  <img
+                    class="editor-img btn-img"
+                    src="style/img/icon/precent.webp"
+                  />
                 </button>
+
                 <button
                   onclick="onChartValueSelect(event,'number')"
                   class="number"
                 >
-                  <img class="editor-img" src="style/img/icon/numbers.webp" />
+                  <img
+                    class="editor-img btn-img"
+                    src="style/img/icon/numbers.webp"
+                  />
                 </button>
               </li>
               <li>
                 <button onclick="onPreview(event)">
-                  <img class="editor-img" src="style/img/icon/play.webp" />
+                  <img
+                    class="editor-img btn-img"
+                    src="style/img/icon/play.webp"
+                  />
                 </button>
               </li>
+              <li onclick="onClearCanvas()">
+                <img class="btn-img" src="style/img/icon/delete.webp" />
+              </li>
+              <li onclick="onSaveChart()">
+                <img class="btn-img" src="style/img/icon/save.webp" alt="" />
+              </li>
               <li>
-                <a href="#" onclick="onDownloadCanvas(this)" download="myphoto">
-                  <img class="editor-img" src="style/img/icon/save.webp" />
+                <a
+                  href="#"
+                  onclick="onDownloadCanvas(this)"
+                  download="my-photo"
+                >
+                  <img
+                    class="editor-img btn-img"
+                    src="style/img/icon/download.webp"
+                  />
                 </a>
+              </li>
+              <li onclick="onSend()">
+                <img class="btn-img" src="style/img/icon/send.webp" alt="" />
               </li>
             </ul>
 
-            <div class="container-term"></div>
+            <article class="container-term"></article>
 
-            <button class="btn-add-term" onclick="onAddTerm(event)">
-              Add Term
-            </button>
+            <div class="btn-editr-down">
+              <button class="btn-add-term" onclick="onAddTerm(event)">
+                Add Term
+              </button>
+
+              <div class="input-file-bck-img">
+                <input
+                  type="file"
+                  class="file-input-btn"
+                  name="image"
+                  onchange="onImgInput(event)"
+                />
+                <img
+                  class="btn-upload btn-img"
+                  src="style/img/icon/upload-image.webp"
+                  onclick="uploadImg()"
+                />
+                <p class="user-msg"></p>
+                <div class="share-container"></div>
+              </div>
+            </div>
           </form>
+
           <div class="draw-canvas">
             <label for="inputText"></label>
             <input
@@ -126,21 +178,9 @@
       </section>
     </main>
 
-    <footer class="border main-layout">
-      <div class="main-footer main-layout border">
+    <footer class="border">
+      <div class="border main-footer main-layout">
         <h3>footer</h3>
-        <div class="input-file">
-          <input
-            type="file"
-            class="file-input-btn"
-            name="image"
-            onchange="onImgInput(event)"
-          />
-
-          <button class="btn-upload" onclick="uploadImg()">📩</button>
-          <p class="user-msg"></p>
-          <div class="share-container"></div>
-        </div>
       </div>
     </footer>
 

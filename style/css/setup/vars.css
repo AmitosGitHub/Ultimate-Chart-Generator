@@ -6,18 +6,18 @@
   /* color palete */
 
   /*main-text-header*/
-  --clr1: rgb(225, 225, 74);
+  --clr1: #ffffff;
   /*main-text-header*/
   --clr5: yellow;
 
   /*borders*/
   /*border-cliced button*/
-  --clr2: greenyellow;
+  --clr2: #58c93a;
 
   /*border-main*/
-  --clr3: blanchedalmond;
+  --clr3: #c2c2c2;
   /*border-card*/
-  --clr4: rgb(46, 45, 45);
+  --clr4: #292929;
   /*footer-text*/
 
   /* letter spacing */

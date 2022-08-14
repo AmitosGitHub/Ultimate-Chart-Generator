@@ -3,10 +3,11 @@
 /* HEADER */
 header {
   border-bottom: 1px solid var(--clr1);
+  background-color: var(--clr4);
 }
 
 .main-header {
-  border-radius: 2em;
+  /* border-radius: 2em; */
   margin: 5px;
   position: relative;
   margin-inline-start: auto;

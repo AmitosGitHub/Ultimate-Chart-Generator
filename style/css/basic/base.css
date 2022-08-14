@@ -21,33 +21,41 @@ body {
 .card {
   max-width: 220px;
   max-height: 220px;
-  border: 2px solid black;
+  border: 2px solid var(--clr3);
   border-radius: 10px;
 }
 
 .border {
-  border: 2px solid var(--clr3);
+  border: 1px solid var(--clr3);
+  border-radius: 10px;
 }
 
-.border-editor {
-  border: 2px solid var(--clr1);
+/* .border-editor {
+  border: 1px solid var(--clr1);
   border-radius: 20px;
-}
+} */
 
 img.editor-img {
   max-width: 40px;
   max-height: 40px;
   cursor: pointer;
 }
+.btn-img {
+  max-width: 48px;
+  max-height: 48px;
+  border: 1px solid var(--clr4);
+  border-radius: 10px;
+}
 a {
   text-decoration: none;
 }
 
 .border-value-btn {
-  outline: 4px solid var(--clr2);
+  outline: 4px solid var(--clr4);
 }
 
 footer {
   min-width: 100vw;
   min-height: 130px;
+  background-color: var(--clr3);
 }
